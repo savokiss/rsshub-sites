@@ -2,11 +2,13 @@ lockfileVersion: 5.3
 
 specifiers:
   '@vuepress/client': ^2.0.0-beta.53
+  '@vuepress/plugin-google-analytics': ^2.0.0-beta.53
   got: ^11.8.5
   vue: ^3.2.42
   vuepress: ^2.0.0-beta.53
 
 dependencies:
+  '@vuepress/plugin-google-analytics': 2.0.0-beta.53
   got: 11.8.5
   vuepress: 2.0.0-beta.53_543017e222f94e3ca6e1c669cc7b47e2
 
@@ -455,6 +457,16 @@ packages:
       '@vuepress/core': 2.0.0-beta.53
       '@vuepress/utils': 2.0.0-beta.53
       execa: 6.1.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@vuepress/plugin-google-analytics/2.0.0-beta.53:
+    resolution: {integrity: sha512-W0tLmO896zHMNPCAqQnZMdYsp8onqPKdSMTSNl4kFHe0jofZjhjmbP1Ie4O781JJDYwnTnY5aHC4M/0LJRbQuQ==}
+    dependencies:
+      '@vuepress/client': 2.0.0-beta.53
+      '@vuepress/core': 2.0.0-beta.53
+      '@vuepress/utils': 2.0.0-beta.53
     transitivePeerDependencies:
       - supports-color
     dev: false

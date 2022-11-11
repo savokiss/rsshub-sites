@@ -11,6 +11,7 @@
   "author": "savokiss",
   "license": "MIT",
   "dependencies": {
+    "@vuepress/plugin-google-analytics": "^2.0.0-beta.53",
     "got": "^11.8.5",
     "vuepress": "^2.0.0-beta.53"
   },

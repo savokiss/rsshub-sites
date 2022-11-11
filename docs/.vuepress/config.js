@@ -1,11 +1,12 @@
 import { defineUserConfig, defaultTheme } from 'vuepress'
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics';
 import { fetchFormatedRules, getCategoryRulesMap } from '../../scripts/rules';
 
 export default defineUserConfig({
   title: 'RSSHub Sites',
   description: 'Just some useful documents',
   head: [
-    ['link', { rel: 'icon', href: `/logo.png` }],
+    ['link', { rel: 'icon', href: `https://rsshub-docs.netlify.app/logo.png` }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
   ],
@@ -27,8 +28,9 @@ export default defineUserConfig({
       export const rulesMap = ${JSON.stringify(map)};`
     );
   },
-  async extendsPage(page) {
-    const rules = await fetchFormatedRules();
-    page.data.rules = rules;
-  }
+  plugins: [
+    googleAnalyticsPlugin({
+      id: 'G-1NDVCZBFVF',
+    }),
+  ],
 });
