@@ -1,11 +1,11 @@
 <template>
   <div class="Rule">
+    <h2 class="Rule__title">{{vm.category}}</h2>
     <a :href="vm.link" target="_blank">{{vm.name}} - {{vm.link}}</a>
   </div>
 </template>
 
 <script setup>
-import { useData } from 'vitepress';
 import { defineProps, onMounted } from 'vue';
 
 const props = defineProps({
@@ -16,16 +16,17 @@ const props = defineProps({
       return {
         link: '',
         name: '',
+        category: '',
       };
     }
   },
 });
-
-const { page } = useData();
 
 onMounted(() => {
   console.log('rule', props.vm);
 })
 </script>
 
-<style></style>
+<style>
+
+</style>

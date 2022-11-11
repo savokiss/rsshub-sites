@@ -1,6 +1,7 @@
-import { fetchFormatedRules } from '../../scripts/rules';
+import { defineUserConfig, defaultTheme } from 'vuepress'
+import { fetchFormatedRules, getCategoryRulesMap } from '../../scripts/rules';
 
-export default {
+export default defineUserConfig({
   title: 'RSSHub Sites',
   description: 'Just some useful documents',
   head: [
@@ -8,25 +9,26 @@ export default {
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
   ],
-  themeConfig: {
+  theme: defaultTheme({
     repo: 'savokiss/rsshub-sites',
     docsDir: 'docs',
-    lastUpdated: 'Last Updated',
-    nav: [{ text: 'Home', link: '/' }],
+    navbar: [{ text: 'Home', link: '/' }],
     socialLinks: [{ icon: 'github', link: 'https://github.com/savokiss/rsshub-sites' }],
     footer: {
       message: 'Released under the MIT License.',
       copyright: 'Copyright © 2019-present savokiss',
     },
-    sidebar: [
-      {
-        text: 'Get Started',
-        items: [{ text: 'Sites', link: '/sites/index.md' }],
-      },
-    ],
-  },
-  async transformPageData(pageData) {
+    sidebar: false,
+  }),
+  async onPrepared(app) {
     const rules = await fetchFormatedRules();
-    pageData.rules = rules;
+    const map = getCategoryRulesMap(rules);
+    app.writeTemp('rules-map.js', `
+      export const rulesMap = ${JSON.stringify(map)};`
+    );
+  },
+  async extendsPage(page) {
+    const rules = await fetchFormatedRules();
+    page.data.rules = rules;
   }
-};
+});

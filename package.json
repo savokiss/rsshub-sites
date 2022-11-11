@@ -4,15 +4,15 @@
   "description": "Grab and show RSSHub sources as a website",
   "main": "index.js",
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs"
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "keywords": [],
   "author": "savokiss",
   "license": "MIT",
   "dependencies": {
     "got": "^11.8.5",
-    "vitepress": "1.0.0-alpha.28"
+    "vuepress": "^2.0.0-beta.53"
   },
   "pnpm": {
     "peerDependencyRules": {
@@ -20,5 +20,9 @@
         "@algolia/client-search"
       ]
     }
+  },
+  "devDependencies": {
+    "@vuepress/client": "^2.0.0-beta.53",
+    "vue": "^3.2.42"
   }
 }

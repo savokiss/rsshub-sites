@@ -1,17 +1,15 @@
 ---
-layout: home
-
-hero:
-  name: Developer Docs
-  text: Collection of some docs for developers
-  tagline: Feel free to star or fork.
-  actions:
-    - theme: brand
-      text: Get Started
-      link: /sites/index
-    - theme: alt
-      text: View on GitHub
-      link: https://github.com/vuejs/vitepress
+home: true
+heroImage: https://rsshub-docs.netlify.app/logo.png
+heroText: Collection of sites from RSSHub source
+tagline: Feel free to star or fork.
+actions:
+  - type: primary
+    text: Get Started
+    link: /sites/
+  - type: secondary
+    text: View on GitHub
+    link: https://github.com/vuejs/vitepress
 
 features:
   - icon: ⚡️

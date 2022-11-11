@@ -1,6 +1,7 @@
-const got = require("got");
+import got from 'got';
+import { parseCategory } from './category';
 
-const rulesURL = "https://rsshub.js.org/build/radar-rules.js";
+const rulesURL = 'https://rsshub.js.org/build/radar-rules.js';
 
 function fetchRules() {
   return got(rulesURL)
@@ -13,26 +14,45 @@ function fetchRules() {
     });
 }
 
-function formatRules (rules) {
+// format the rules to an array
+function formatRules(rules) {
   if (!rules) {
     return [];
   }
-  const rulesList = Object.keys(rules).map(key => {
+  const rulesList = Object.keys(rules).map((key) => {
     const rule = rules[key];
     const link = key.startsWith('http') ? key : `http://${key}`;
     return {
       link,
       name: rule._name,
-    }
-  })
+      item: rule,
+      category: parseCategory(rule),
+    };
+  });
   return rulesList;
 }
 
-function fetchFormatedRules () {
+function fetchFormatedRules() {
   return fetchRules().then(formatRules);
 }
 
-module.exports = {
+function getCategoryRulesMap(rules) {
+  const map = {};
+  rules.forEach(rule => {
+    const { category } = rule;
+    if (!map[category]) {
+      map[category] = {
+        name: category,
+        items: [],
+      };
+    }
+    map[category].items.push(rule);
+  });
+  return map;
+}
+
+export {
   fetchRules,
   fetchFormatedRules,
+  getCategoryRulesMap,
 };
