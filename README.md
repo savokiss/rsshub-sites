@@ -2,4 +2,4 @@
 
 Grab and show rsshub sources
 
-See: <https://rsshub.detools.dev>
+See: <https://rsssites.detools.dev>
